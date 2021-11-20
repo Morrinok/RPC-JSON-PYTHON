@@ -1,0 +1,82 @@
+/*.fondo{
+
+    background-image: url("https://image.freepik.com/free-photo/burger-fries-mockup_7939-3190.jpg");
+    background-size: cover;
+    background-color:rgb(41, 38, 38);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    display: block;
+    
+
+}*/
+body{
+
+    background-color: #211c47
+}
+header{
+    z-index: 100;
+}
+
+.titulo{
+
+    text-align: center;
+    
+}
+.description
+{
+    text-align: justify;
+    color: rgb(133, 180, 199);
+    height: 25px;
+    overflow: hidden;
+    transition: heigth 3.s ease-in .3s;
+
+}
+
+
+.description:hover{
+
+    height:auto;
+}
+
+.carrito{
+
+    min-height: 88vh;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+
+}
+
+.table_comidas{
+
+    display: flex;
+}
+
+.table_comidas > img{
+
+    width: 9rem;
+    object-fit: contain;
+    border-radius: 6px;
+    margin-right: 20px;
+
+}
+
+.table_cantidad > input{
+
+    width: 40px;
+    border: none;
+    outline: 0;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+/*.container{
+
+    background-color: #014421;
+    top: 0;
+    position:sticky;
+    
+}*/
