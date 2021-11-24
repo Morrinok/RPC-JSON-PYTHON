@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "http-jsonrpc-server": "^1.1.0",
+    "python-bridge": "^1.1.0"
+  }
+}
