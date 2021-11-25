@@ -8,6 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Restaurante "EL GATO"</title>
 
+    <!-- AJAX -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
     <!-- Jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -21,9 +23,9 @@
 
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js></script>
 
-    <link id=”diseño-pag” type="text/css" rel="stylesheet" href="css/diseño_pag.css">
+    <link id=”diseño-pag” type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/diseño_pag.css')}}">
 
-    <script type="text/javascript" src="./js/funciones.js" defer></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/funciones.js')}}" defer></script>
 
 </head>
 
@@ -67,7 +69,7 @@
                 <div class="col d-lex justify-content-center mb-4">
                     <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
                         <h4 class="card-title pt-2 text-primary titulo">Hamburguesa Pollo Crispy Bacon</h4>
-                        <img src="img/hamburguesa pollo.png" class="card-img-top" alt="...">
+                        <img src="{{ url_for('static', filename='img/hamburguesa pollo.png')}}" class="card-img-top" alt="...">
                         <div class="card-body ">
                           <p class="card-text description">Hamburguesa Servida en un suave pan, una exquisita pechuga de Pollo acompañada con Tocino, Queso Cheddar, Tomates, crujiente Lechuga y mayonesa.</p>
                           <h5 class="text-primary"> Precio: <span class="precio"> $3800</span> </h5>                          
@@ -81,7 +83,7 @@
                 <div class="col d-lex justify-content-center-mb-4">
                     <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem ;">
                         <h4 class="card-title pt-2 text-primary titulo">Hamburguesa  <br><br> </h4>
-                        <img src="img/hamburguesa carne.png" class="card-img-top" alt="...">
+                        <img src="{{ url_for('static', filename='img/hamburguesa carne.png')}}" class="card-img-top" alt="...">
                         <div class="card-body ">
                           <p class="card-text description">Hamburguesa de carne 100% vacuno acompañada de exquisito Queso Cheddar, Tomate, Lechuga y cebolla, ketchup, mostaza y mayonesa.</p>
                           <h5 class="text-primary"> Precio: <span class="precio"> $3850</span> </h5>                          
@@ -95,7 +97,7 @@
                 <div class="col d-lex justify-content-center-mb-4">
                     <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
                         <h4 class="card-title pt-2 text-primary titulo">Hamburguesa triple queso <br><br></h4>
-                        <img src="img/hamburguesa triple_queso.png" class="card-img-top" alt="...">
+                        <img src="{{ url_for('static', filename='img/hamburguesa triple_queso.png')}}" class="card-img-top" alt="...">
                         <div class="card-body ">
                           <p class="card-text description">Tres Hamburguesas de carne 100% vacuno, queso derretido, Mostaza, Ketchup y un toque de cebolla, algo nunca puede fallar</p>
                           <h5 class="text-primary"> Precio: <span class="precio"> $3800</span> </h5>                          
@@ -109,7 +111,7 @@
                 <div class="col d-lex justify-content-center-mb-4">
                     <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
                         <h4 class="card-title pt-2 text-primary titulo">Hamburguesa solo carne <br><br> </h4>
-                        <img src="img/hamburguesa sola.png" class="card-img-top" alt="...">
+                        <img src="{{ url_for('static', filename='img/hamburguesa sola.png')}}" class="card-img-top" alt="...">
                         <div class="card-body ">
                           <p class="card-text description">El sabor de la carne 100% vacuno mas deliciosa acompañada del pan mas esponjoso, ketchup, mostaza y cebolla.El sabor de la carne 100% vacuno mas deliciosa acompañada del pan mas esponjoso, ketchup, mostaza y cebolla.</p>
                           <h5 class="text-primary"> Precio: <span class="precio"> $1900</span> </h5>                          
@@ -126,6 +128,8 @@
 
         <div class="tab-pane fade carrito" id="pills-carrito" role="tabpanel" aria-labelledby="pills-carrito-tab">
 
+            <h6 class="card-title pt-2 text-primary nombre">Nombre: <input type="text" id="nombre" name="nombre" size="20"></h6>
+            <h6 class="card-title pt-2 text-primary direccion">Direccion: <input type="text" id="direccion" name="direccion" size="50"></h6>
             <br>
             <table class="table table-dark table-striped">
                 
@@ -158,9 +162,12 @@
 
                 <div class="col d-flex justify-content-end">
 
-                    <button class="btn btn-success" onclick="realizarOrden()">COMPRAR</button>
+                    <button class="btn btn-success" id = "mybutton">COMPRAR</button>
+                    
 
                 </div>
+
+                <p>{{{ }}}</p>
 
             </div>
 

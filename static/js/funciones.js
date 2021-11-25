@@ -12,17 +12,14 @@ function addToCarritoItem(e){
     const item = button.closest('.card')
     const itemTitle = item.querySelector('.card-title').textContent;
     const itemPrice = item.querySelector('.precio').textContent;
-    const itemImg = item.querySelector('.card-img-top').src;
 
     const newItem = {
 
         title: itemTitle,
         precio: itemPrice,
-        img: itemImg,
         cantidad: 1
-
     }
-
+    
     addItemCarrito(newItem)
 
 }
@@ -60,8 +57,7 @@ function renderCarrito(newItem){
 
         <td class="table_comidas">
 
-            <img src=${item.img}>
-            <h6 class="title">${item.title}</h6>
+            <p class="title">${item.title}</p>
 
         </td>
 
@@ -78,7 +74,7 @@ function renderCarrito(newItem){
         tbody.append(tr);
         
         tr.querySelector(".delete").addEventListener('click', removeItemCarrito) 
-        tr.querySelector(".input_elemento").e 
+        tr.querySelector(".input_elemento").addEventListener('change',sumaCantidad)
 
     })
     CarritoTotal()
@@ -117,25 +113,33 @@ function removeItemCarrito (e){
     CarritoTotal()
 }
 
-function realizarOrden (e){
+function sumaCantidad(e){
 
-    console.log(JSON.stringify(carrito))
+    const sumaInput = e.target
+    const tr= sumaInput.closest(".ItemCarrito")
+    const title = tr.querySelector('.title').textContent;
+    carrito.forEach(item => {
 
-    'use strict';
+        if(item.title.trim() === title){
 
-    let assert = require('assert');
-    let pythonBridge = require('python-bridge');
-
-    let python = pythonBridge();
-
-    python.ex`import math`;
-    python`math.sqrt(9)`.then(x => assert.equal(x, 3));
-
-    let list = [3, 4, 2, 1];
-    python`sorted(${list})`.then(x => assert.deepEqual(x, list.sort()));
-
-    python.end();
-
-
+            sumaInput.value<1? (sumaInput.value=1): sumaInput.value;
+            item.cantidad = sumaInput.value;
+            CarritoTotal()
+        }
+    })
 }
 
+$(function() { 
+    $("#mybutton").click(function (event) {
+        $.post("/postmethod", {
+
+            javascript_data: JSON.stringify(newPedido = {
+        
+                nombre: document.getElementById('nombre').value,
+                direccion: document.getElementById('direccion').value,
+                carrito: carrito
+                
+            }) 
+        });
+    }); 
+});
