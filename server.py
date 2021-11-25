@@ -3,17 +3,33 @@ import json
 
 def confirmar(*args):
 
-    for arg in args:
-        try:
+	for arg in args:
+		try:
 
-            obj = json.loads(arg)
-            json_formatted_str = json.dumps(obj, indent=4)
-            print(json_formatted_str)
+			obj = json.loads(arg)
+			#Convertir Diccionario a una lista
+			nombre = obj["nombre"]
+			direccion = obj["direccion"]
+			pedidos = obj["carrito"]
+			print("=======================================================================================================")
+			print("Nuevo Pedido Recibido!")
+			print("\nNombre Cliente: " + nombre)
+			print("Direccion Cliente: " + direccion)
+			print("\nPedidos:")
+			for i in pedidos:
+				sandwich = i["title"]
+				precio =  i["precio"]
+				cantidad = i["cantidad"]
+				print("\n|Sandwich -> " + str(sandwich) + " | Precio -> " + str(precio)+ " | Cantidad -> " + str(cantidad) + " |")
+			print("=======================================================================================================")
+			# Pretty Print JSON
+			#json_formatted_str = json.dumps(obj, indent=4)
+			#print(json_formatted_str)
 
-            return True
-        except TypeError:
-            lenval = None
+			return True
 
+		except TypeError:
+			lenval = None
 def main():
 	server = SimpleJSONRPCServer(('localhost', 1006))
 	server.register_function(confirmar)
